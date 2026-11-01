@@ -14,7 +14,8 @@
 /coverage
 
 # next.js
-/.next/
+# no trailing slash: also matches the local .next symlink used for the iCloud workaround
+/.next
 /out/
 
 # production
@@ -43,3 +44,7 @@ next-env.d.ts
 # iCloud-excluded build artifacts (project lives in iCloud-synced ~/Documents)
 /node_modules.nosync
 /.next.nosync
+/node_modules 2
+
+# netlify cli
+.netlify
