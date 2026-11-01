@@ -1,0 +1,156 @@
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
+@source "../data";
+@source "../lib";
+
+/*
+ * Design tokens — sampled from the reference screenshots, the Elementor export
+ * of ecomdreamz.com and "EcomDreamz Site.dc.html".
+ */
+@theme {
+  --color-brand: #ff4a5d;
+  --color-brand-dark: #d93a4c;
+  --color-ink: #000000;
+  --color-ink-soft: #1b1d21;
+  --color-ink-quote: #242424;
+  --color-muted: #5f5f5f;
+  --color-line: #e6e6e6;
+  --color-line-soft: #ededf0;
+  --color-surface: #f7f7f9;
+  --color-surface-alt: #f0f1f4;
+  --color-faq: #f5f5f5;
+  --color-client-circle: #e1e5e5;
+  --color-night: #222830;
+  --color-night-alt: #262832;
+  --color-night-card: #30333c;
+  --color-banner: #1b1d21;
+  --color-testimonial: #be2a2a;
+  --color-blush: #fdecec;
+  --color-success: #1e8e4a;
+
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  /* The live site requests Poppins for body copy but it never loads, so the
+     screenshots render the browser sans-serif fallback. Reproduced here. */
+  --font-copy: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Elementor desktop breakpoint (1025px), declared in rem so it sorts after md/lg. */
+  --breakpoint-lgx: 64.0625rem;
+
+  --container-site: 1120px;
+  --container-wide: 1200px;
+
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    overflow-x: clip;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility site-container {
+  width: min(var(--container-site), 100% - 32px);
+  margin-inline: auto;
+}
+
+@utility wide-container {
+  width: min(var(--container-wide), 100% - 32px);
+  margin-inline: auto;
+}
+
+/* Elementor shape dividers are filled white by CSS, not by the SVG source. */
+@utility shape-fill-white {
+  & path {
+    fill: #ffffff;
+  }
+}
+
+/* Rich text from the CMS (legal pages, case study). */
+@utility rich-text {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.9;
+
+  & p {
+    margin: 0 0 1em;
+  }
+
+  & ol,
+  & ul {
+    margin: 0 0 1em;
+    padding-left: 1.4em;
+  }
+
+  & ol {
+    list-style: decimal;
+  }
+
+  & ul {
+    list-style: disc;
+  }
+
+  & li {
+    margin: 0.25em 0;
+  }
+
+  & li > ul {
+    margin: 0.4em 0;
+  }
+
+  & b,
+  & strong {
+    font-weight: 700;
+  }
+
+  & a {
+    color: var(--color-brand);
+  }
+
+  & a:hover {
+    color: var(--color-brand-dark);
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 1.4em 0 0.6em;
+  }
+}
